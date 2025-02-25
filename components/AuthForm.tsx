@@ -94,13 +94,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                     Email
                   </FormLabel>
 
-                  <FormControl>
-                    <Input
-                      placeholder="Enter your email"
-                      className="shad-input"
-                      {...field}
-                    />
-                  </FormControl>
+                  
                 </div>
 
                 <FormMessage className="shad-form-message" />
