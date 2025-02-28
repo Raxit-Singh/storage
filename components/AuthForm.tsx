@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { z } from "zod";
@@ -22,12 +24,12 @@ type FormType = "sign-in" | "sign-up";
 const authFormSchema = (formType: FormType) => {
   return z.object({
     email: z.string().email(),
-    fullName:
-      formType === "sign-up"
-        ? z.string().min(2).max(50)
-        : z.string().optional(),
-  });
-};
+    fullName: 
+    formType=== "sign-up"
+    ? z.string().min(2).max(50)
+    : z.string().optional(),
+  })
+}
 
 const AuthForm = ({ type }: { type: FormType }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -101,7 +103,22 @@ const AuthForm = ({ type }: { type: FormType }) => {
               </FormItem>
             )}
           />
-          
+          <Button
+            type="submit"
+            className="form-submit-button"
+            disabled={isLoading}
+          >
+            {type === "sign-in" ? "Sign In" : "Sign Up"}
+            {isLoading && (
+              <Image
+                src="/assets/icons/loader.svg"
+                alt="loader"
+                width={24}
+                height={24}
+                className="ml-2 animate-spin"
+              />
+            )}
+          </Button>
           {errorMessage && (
             <p className="error-message">*{errorMessage}</p>
           )}
